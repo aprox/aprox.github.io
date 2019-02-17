@@ -1,0 +1,43 @@
+#+begin_src html
+.
+---
+layout: default
+title: Primer posteo.
+---
+#+end_src
+
+
+
+Este es el primer posteo
+
+#+NAME: Pipelining
+#+begin_src
+
+Sin Pipeline
+=== ========
+
+
+ | Instrucción 1     | Instrucción 2     |  ...    
+ | 1 | 2 | 3 | 4 | 5 | 1 | 2 | 3 | 4 | 5 | 1 | 2 | . . .
+
+
+Con Pipeline
+=== ========
+
+ | Instrucción 1     |
+     | Instrucción 2     |  
+         | Instrucción 3     | 
+             | Instrucción 4     | 
+                  | Instrucción 5    | 
+                     | Instrucción 6     |
+
+
+ | 1 | 2 | 3 | 4 | 5 |
+     | 1 | 2 | 3 | 4 | 5 |
+         | 1 | 2 | 3 | 4 | 5 | 
+             | 1 | 2 | 3 | 4 | 5 | 
+                 | 1 | 2 | 3 | 4 | 5 | 
+                     | 1 | 2 | 3 | 4 | 5 | 
+
+#+end_src
+
