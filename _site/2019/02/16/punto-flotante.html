@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Punto Flotante. | Your awesome title</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Punto Flotante." />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
+<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
+<link rel="canonical" href="http://localhost:4000/2019/02/16/punto-flotante.html" />
+<meta property="og:url" content="http://localhost:4000/2019/02/16/punto-flotante.html" />
+<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-02-16T00:00:00-03:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"Punto Flotante.","dateModified":"2019-02-16T00:00:00-03:00","datePublished":"2019-02-16T00:00:00-03:00","url":"http://localhost:4000/2019/02/16/punto-flotante.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2019/02/16/punto-flotante.html"},"description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Your awesome title" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Your awesome title</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <p>
+<img src="ltxpng/2019-02-16-punto-flotante_1254b8312fc4c212f3f6af3400f9dae361e8d52d.png" alt="$x^2$" />
+</p>
+
+<pre class="example" id="c-function">
+int main () {}
+</pre>
+
+
+<p>
+Los número en las computadoras suelen representarse como tiras de
+ceros y unos. Si nuestra intención es representar únicamente números
+<i>enteros</i>, entonces podemos elegir cuáles números enteros vamos a
+representar, y asignar a cada combinación de ceros y unos uno de
+ellos.
+</p>
+
+<p>
+Desde luego, las tiras de ceros y unos que usan tienen la misma
+cantidad de lugares (de <i>bits</i>). Así, según sea su tamaño, será la
+cantidad de números que tendrán representación en nuestra
+máquina. Obviamente, es razonable también ejegir números que sean
+consutivos en un rango. Por ejemplo, podemos representar los números
+entre -128 y 127 si contamos con 8 bits. Pero también podemos usar
+esos 8 bits para representar los enteros entre 0 y 255. Más en
+general, <img src="ltxpng/2019-02-16-punto-flotante_2eb2a49ddc71eef9c43a393f16212fd3ca578582.png" alt="$n$" /> bits alcanzan para representar <img src="ltxpng/2019-02-16-punto-flotante_e4820cf6571fe77e91412a72f8e4e38ab9c7b8b8.png" alt="$2^n$" /> números. Como
+<img src="ltxpng/2019-02-16-punto-flotante_e1b0a0298a6f5da22862d3244254c8a610cf8d97.png" alt="$2^8=256$" />, entonces 8 bits permiten representar 256 números. Pero ¿por
+qué es esto así? 
+</p>
+
+<p>
+Bueno, claramente un bit permite representar 2 números y <img src="ltxpng/2019-02-16-punto-flotante_ff2b1e543eea1d268f4cf745b88993ef7d01a3d9.png" alt="$2^1=2$" />. Por
+otra parte, supongamos que con <img src="ltxpng/2019-02-16-punto-flotante_d7d0679e4dbf4cfaf3f3d68eee0bd5945236d6bc.png" alt="$m$" /> bits representamos <img src="ltxpng/2019-02-16-punto-flotante_9c9264ad5043b180db3c947e34d57a67577fc0b2.png" alt="$2^m$" /> números y
+agregamos un bit más. De esta forma podemos representar, por cada
+estado de este nuevo bit, <img src="ltxpng/2019-02-16-punto-flotante_9c9264ad5043b180db3c947e34d57a67577fc0b2.png" alt="$2^m$" /> números, es decir, en total <img src="ltxpng/2019-02-16-punto-flotante_c41cfedb8fc2c20d1e270ac494953bd314b7eb05.png" alt="$2^m + 2^m
+= 2^{m+1}$" /> y entonces con <img src="ltxpng/2019-02-16-punto-flotante_acfb54e27814a2e5157e9f5cd6a3ccb9eb5ff294.png" alt="$m+1$" /> bits representamos <img src="ltxpng/2019-02-16-punto-flotante_f539b7f84e62fe8b5f079a99fb7ca2b02e75c025.png" alt="$2^{m+1}$" /> números.
+</p>
+
+<p>
+Pero muchas veces necesitamos representar número <i>reales</i>, no sólo
+enteros. Es decir, si tenemos por ejemplo una lista y queremos saber
+cuantos elementos contiene, o si queremos ver el tercero o el cuarto,
+o cualquier posición en particular, entonces podemos usar números naturales
+(incluyendo el cero) o, como se suele decir, enteros sin signo. Sin
+embargo, existen aplicaciones en las cuales necesitamos números reales.
+</p>
+
+<p>
+Esto no significa que si el resultado de una cuenta no es entero
+tengamos que usar necesariamente una representación diferente. Por
+ejemplo, si un grupo de amigos tiene que dividir los gastos de una
+comida y entonces alguien con una calculadora divide el total por la
+cantidad que sean, si bien muy probablemente el resultado no sea
+entero, probablemente tampoco sea nececesaria esa precisión en este
+caso. Por otro parte, incluso si fuera necesario conocer con la mayor
+exactitud posible, no hay monedas para cantidades inferiores a un
+centavo. Entonces, expresando las cantidades en centavos el resultado
+obtendrá suficiente precisión.
+</p>
+
+<p>
+Es más, cuando necesitamos hacer cuentas con números reales, los
+resultados en general son aproximaciones, no exactos, si bien la
+aproximación puede ser suficientemente cercana para que no resulte un
+problema, como en el ejemplo mencionado.
+</p>
+
+<p>
+Pero para los números reales se usa la representación de <i>punto
+flotante</i>. Esta representación es igual a la notación
+científica. Veamos algunos ejemplos decimales.
+</p>
+
+<p>
+Supongamos que, de modo análogo a como ocurre con las computadoras,
+tenemos un cantidad fija de 5 dígitos paa representar un número, y
+queremos representar el número correspondiente a la población mundial
+que en 2017 <a href="https://es.wikipedia.org/wiki/Poblaci%C3%B3n_mundial">según wikipedia</a> es de 7.350 millones, o sea
+7.350.000.000. Claramente, con 5 dígitos no nos alcanza. ¿Qué podemos
+hacer? Bueno, algo que podemos hacer es decir que vamos a expresar en
+millones que fue lo que hicimos en un principio. Esto no es otra cosa
+que decir que la población mundial es de <img src="ltxpng/2019-02-16-punto-flotante_d24212a3a2fb89e3065ba42390180e39a17c6172.png" alt="$7350 \times 10^6$" />. Tenemos
+entonces el número descompuesto en dos partes. Por otra parte,
+probablemente este número sea una aproximación y no el número exacto,
+pero también probablemente las primeras cifras si se correspondan con
+el valor exacto. Ahora bien, si fueramos a usar esta representación en
+la computadora, con el exponente fijo, podríamos usarla para estas
+magnitudes, pero no nos serviría para muchas otras, como el ejemplo
+anterior.
+</p>
+
+<p>
+Por ese motivo, es necesario poder decir que el número está expresado
+en millones, o en decenas, o en unidades de mil, etc. De este modo, el
+número se representa de la siguiente manera:
+<img src="ltxpng/2019-02-16-punto-flotante_1a5460ab18e4ebdde8cb2210e573ee6b0001051d.png" alt="\[
+f = s \times d_1d_2...d_t \times \beta^\epsilon
+\]" />
+</p>
+
+<p>
+donde <img src="ltxpng/2019-02-16-punto-flotante_4218b35f41a3077f452acae099f5b412101c1af0.png" alt="$s$" /> es el <b>signo</b> (1 o -1), los <img src="ltxpng/2019-02-16-punto-flotante_a62b7e32dfef57d2319e6657a8a31550dff19ff0.png" alt="$d_i$" /> (<img src="ltxpng/2019-02-16-punto-flotante_194cc61f8cb2ab23ecacbfcf28774717673f2419.png" alt="$i = 1, .., t$" />) son
+dígitos enteros que componen la <b>mantisa</b> y cumplen <img src="ltxpng/2019-02-16-punto-flotante_9e224c1cede7f94d911f840faf2beb97b64571a3.png" alt="$0\leq d_i &amp;lt;
+\beta$" />. <img src="ltxpng/2019-02-16-punto-flotante_a3d6f898842a48afc5b7b645cf573a9837e90ad2.png" alt="$\beta$" /> es la base (10 en los ejemplos de arriba, en la
+computadora suele ser 2). <img src="ltxpng/2019-02-16-punto-flotante_3e74ee20a4e2812e4d21101637a63b57c1538d04.png" alt="$\epsilon$" /> es el exponente (al que se eleva
+la base). <img src="ltxpng/2019-02-16-punto-flotante_e588c6b11acbf91f6b00efdf1c4cfa35f6245af4.png" alt="$t$" /> es la cantidad de digitos <img src="ltxpng/2019-02-16-punto-flotante_a62b7e32dfef57d2319e6657a8a31550dff19ff0.png" alt="$d_i$" /> presentes en la mantisa
+y se llama <b>precisión</b>.
+</p>
+
+<p>
+Tomemos el número 8000 como ejemplo. <img src="ltxpng/2019-02-16-punto-flotante_8c6d91799b2f0eaab122a3b8daa01dfc630c8d46.png" alt="$8000_{10} = 1111101000000_{2}$" /> y
+necesitamos 13 bits para representarlo. Como la representación es
+binaria, el número que multiplica la mantisa no es una potebncia de 10
+sino de 2. Por ejemplo <img src="ltxpng/2019-02-16-punto-flotante_51937c28e3f39d63fbbf051b6f4bdfe1525fa51f.png" alt="$8000 = 125 \times 2^6$" /> ya que <img src="ltxpng/2019-02-16-punto-flotante_037d3eaffbba1b625369cc8107d7325aa7997bb6.png" alt="$125_{10} =
+1111101_2$" />. Como siempre, podemos representar el mismo nùmero con
+distantas opciones de exponente y mantisa. Por ese motivo, conviene
+adoptar la convención siguiente. Dado que el número esta representado
+con digitos biarios (cero o uno), entonces con la única excepción del
+cero, todo número tendrá algún uno en su representación. De este modo,
+podemos asumir que, cuando no se trata del cero, hay un uno
+(implícito) que no hace falta guardar en nuestra tira de bits. Así por
+ejemplo, el número 3 podría representarse con una mantisa con un solo
+uno y un exponente también de uno, representando así 
+<img src="ltxpng/2019-02-16-punto-flotante_68cb829ef9efc02915250039f2dcb364305043ff.png" alt="$1.1_2 \times 2_{10}^1 = 3_{10}$" />. Esto permite además agregar un bit más, que
+está implícito siempre.
+</p>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Your awesome title</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Your awesome title</li><li><a class="u-email" href="mailto:your-email@example.com">your-email@example.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jekyll"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jekyll</span></a></li><li><a href="https://www.twitter.com/jekyllrb"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jekyllrb</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
