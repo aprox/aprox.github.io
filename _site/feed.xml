@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-03-24T17:17:51-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">aprox</title><subtitle>Blog de formalismos y aproximaciones.</subtitle><entry><title type="html">Espacio muestral y de probabilidad</title><link href="http://localhost:4000/2019/03/17/espacio-muestral-proba.html" rel="alternate" type="text/html" title="Espacio muestral y de probabilidad" /><published>2019-03-17T00:00:00-03:00</published><updated>2019-03-17T00:00:00-03:00</updated><id>http://localhost:4000/2019/03/17/espacio-muestral-proba</id><content type="html" xml:base="http://localhost:4000/2019/03/17/espacio-muestral-proba.html">&lt;script src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-03-24T21:00:39-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">aprox</title><subtitle>Blog de formalismos y aproximaciones.</subtitle><entry><title type="html">Espacio muestral y de probabilidad</title><link href="http://localhost:4000/2019/03/17/espacio-muestral-proba.html" rel="alternate" type="text/html" title="Espacio muestral y de probabilidad" /><published>2019-03-17T00:00:00-03:00</published><updated>2019-03-17T00:00:00-03:00</updated><id>http://localhost:4000/2019/03/17/espacio-muestral-proba</id><content type="html" xml:base="http://localhost:4000/2019/03/17/espacio-muestral-proba.html">&lt;script src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 
 &lt;p&gt;
 Usada para modelar distinto tipos de fenómenos, la teoría de la
@@ -416,7 +416,7 @@ Por último, una cosa que se puede hacer es obviar ese uno más
 significativo, es decir, asumir que para cualquier número representado
 ese uno está implícito y no usar un bit en él. Esto no genera
 inconvenientes y da un bit más que se puede aprovechar para agregar un
-decimal. Supongo que una forma conveniente de distinguir el cero en
+dígito. Supongo que una forma conveniente de distinguir el cero en
 este caso es fijarse en el exponente y si es cero se trata del cero y
 no del uno. Pues ¿para qué querríamos que el exponente pueda valer
 cero si ya podemos representar el uno de otra forma?
@@ -637,7 +637,7 @@ distintas. Entonces un byte alcanza para 255 números, no ya 256. Por
 otra parte, esto hace que (la implementación de) las operaciones
 aritméticas sean diferentes según el signo. Por ejemplo (usando
 &lt;i&gt;nibbles&lt;/i&gt; o sea tiras de 4 bits), \(0010 + 0011 = 0101\) siguiendo el
-método habitual de la suma aplicada a las tiras de bits, pues \(2 + =
+método habitual de la suma aplicada a las tiras de bits, pues \(2 + 3 =
 5\) pero \(1010 + 0011 = 0001\) ya que \(1010\) es \(-2\) y \(-2 + 3 = 1\), lo
 cual no resulta de aplicar ese método a las tiras de bits. Si
 sumáramos de esa forma obtendríamos \(1101\) es decir \(-5\).
@@ -739,14 +739,13 @@ realiza bit a bit como es habitual. La diferencia está en el overflow.
 &lt;p&gt;
 Dado que el máximo sin signo es 255, cualquier suma cuya resultado sea
 mayor produce un overflow. Para detectarlo en este caso basta fijarse
-el bit más significativo de los sumandos (si ambos son 1, hay
-overflow, si no, no). En cambio, en la suma con números complemento a
-dos esta regla es diferente. Veamos, por ejemplo, la suma \(-1 + -1\),
-estos es \(1111\ 1111 + 1111\ 1111 = 1111\ 1110\) con &lt;i&gt;carry&lt;/i&gt;. Sin
-embargo, aquí no hubo overflow y \(1111\ 1110 = -2\) en complemento a
-dos. Para que haya overflow en complemento a dos tiene que ocurrir que 
-&lt;i&gt;el carry hacia el bit del signo (el bit más significativo) sea
-diferente al carry fuera de la representación&lt;/i&gt;.
+si se produce un carry afuera del bit más significativo. En cambio, en
+la suma con números complemento a dos esta regla es diferente. Veamos,
+por ejemplo, la suma \(-1 + -1\), estos es \(1111\ 1111 + 1111\ 1111 =
+1111\ 1110\) con &lt;i&gt;carry&lt;/i&gt;. Sin embargo, aquí no hubo overflow y \(1111\
+1110 = -2\) en complemento a dos. Para que haya overflow en complemento
+a dos tiene que ocurrir que &lt;i&gt;el carry hacia el bit del signo (el bit
+más significativo) sea diferente al carry fuera de la representación&lt;/i&gt;.
 &lt;/p&gt;
 
 &lt;p&gt;

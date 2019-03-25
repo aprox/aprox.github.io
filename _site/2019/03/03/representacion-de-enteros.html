@@ -262,7 +262,7 @@ distintas. Entonces un byte alcanza para 255 números, no ya 256. Por
 otra parte, esto hace que (la implementación de) las operaciones
 aritméticas sean diferentes según el signo. Por ejemplo (usando
 <i>nibbles</i> o sea tiras de 4 bits), \(0010 + 0011 = 0101\) siguiendo el
-método habitual de la suma aplicada a las tiras de bits, pues \(2 + =
+método habitual de la suma aplicada a las tiras de bits, pues \(2 + 3 =
 5\) pero \(1010 + 0011 = 0001\) ya que \(1010\) es \(-2\) y \(-2 + 3 = 1\), lo
 cual no resulta de aplicar ese método a las tiras de bits. Si
 sumáramos de esa forma obtendríamos \(1101\) es decir \(-5\).
@@ -364,14 +364,13 @@ realiza bit a bit como es habitual. La diferencia está en el overflow.
 <p>
 Dado que el máximo sin signo es 255, cualquier suma cuya resultado sea
 mayor produce un overflow. Para detectarlo en este caso basta fijarse
-el bit más significativo de los sumandos (si ambos son 1, hay
-overflow, si no, no). En cambio, en la suma con números complemento a
-dos esta regla es diferente. Veamos, por ejemplo, la suma \(-1 + -1\),
-estos es \(1111\ 1111 + 1111\ 1111 = 1111\ 1110\) con <i>carry</i>. Sin
-embargo, aquí no hubo overflow y \(1111\ 1110 = -2\) en complemento a
-dos. Para que haya overflow en complemento a dos tiene que ocurrir que 
-<i>el carry hacia el bit del signo (el bit más significativo) sea
-diferente al carry fuera de la representación</i>.
+si se produce un carry afuera del bit más significativo. En cambio, en
+la suma con números complemento a dos esta regla es diferente. Veamos,
+por ejemplo, la suma \(-1 + -1\), estos es \(1111\ 1111 + 1111\ 1111 =
+1111\ 1110\) con <i>carry</i>. Sin embargo, aquí no hubo overflow y \(1111\
+1110 = -2\) en complemento a dos. Para que haya overflow en complemento
+a dos tiene que ocurrir que <i>el carry hacia el bit del signo (el bit
+más significativo) sea diferente al carry fuera de la representación</i>.
 </p>
 
 <p>
