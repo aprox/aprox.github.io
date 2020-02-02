@@ -4,6 +4,32 @@
   
   <url>
     <loc>http://aprox.github.io/</loc>
+    <lastmod>2019-07-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://aprox.github.io/posts/</loc>
+    <lastmod>2019-07-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://aprox.github.io/posts/variables-aleatorias/</loc>
+    <lastmod>2019-07-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://aprox.github.io/posts/muestral-proba/</loc>
+    <lastmod>2019-03-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://aprox.github.io/posts/punto-flotante/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://aprox.github.io/posts/representacion-de-enteros/</loc>
+    <lastmod>2019-03-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -16,10 +42,6 @@
   
   <url>
     <loc>http://aprox.github.io/posts/2019-03-10-punto-flotante/</loc>
-  </url>
-  
-  <url>
-    <loc>http://aprox.github.io/posts/</loc>
   </url>
   
   <url>
