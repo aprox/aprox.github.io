@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Aprox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-ar</language>
-    <lastBuildDate>Sun, 14 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://aprox.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Contenedores en C&#43;&#43;</title>
+      <link>http://aprox.github.io/posts/contenedores/</link>
+      <pubDate>Thu, 30 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://aprox.github.io/posts/contenedores/</guid>
+      <description>Los contenedores sirven para guardar secuencias de objetos. Si no tuvieramos contenedores, tendríamos que recordar el lugar de cada uno para cada vez que necesitamos usarlo. En cambio, podemos usar una colección y sólo recordar el lugar donde está ella. Esto implica, sin embargo, que entonces haya que tener que buscarlo dentro de ese contenedor cuando lo necesitemos. Pero eso es mejor a tener que anotar dónde está cada cosa.</description>
+    </item>
     
     <item>
       <title>Variables aleatorias</title>
@@ -45,42 +54,6 @@
       
       <guid>http://aprox.github.io/posts/representacion-de-enteros/</guid>
       <description>Existen al menos dos motivos para representar los números, para hablar de ellos y para hacer cuentas con ellos. Bueno, el segundo ejemplo incluye al primero, pero muchas veces representamos números sólo para mencionarlo (o compararlo) sin hacer ningún cálculo, como al medir algo sólo para conocer su longitud. En ambos casos es muy relevante la forma de la representación para la practicidad de su uso.  Resultaría bastante incómodo representar cada número con un símbolo distinto: acordarse de cada uno sería muy difícil.</description>
-    </item>
-    
-    <item>
-      <title>Espacio muestral y de probabilidad</title>
-      <link>http://aprox.github.io/posts/2019-03-17-espacio-muestral-proba/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://aprox.github.io/posts/2019-03-17-espacio-muestral-proba/</guid>
-      <description>Usada para modelar distinto tipos de fenómenos, la teoría de la probabilidad permite muchas aplicaciones de la matemática.  En los libros introductorios al tema, es muy común encontrar entre los primeros ejemplos el de tirar una moneda y ver cómo cae. Predecir exactamente este resultado en una situación particular conociendo la posición en que se la arroja, la fuerza que se le aplica, el lugar donde se lo hace, las características del entorno, etc.</description>
-    </item>
-    
-    <item>
-      <title>Números de punto flotante</title>
-      <link>http://aprox.github.io/posts/2019-03-10-punto-flotante/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://aprox.github.io/posts/2019-03-10-punto-flotante/</guid>
-      <description>En otro post vimos algunas formas usadas para representar números enteros en las computadoras. Pero muchas veces necesitamos representar número reales, no sólo enteros. Es decir, si tenemos por ejemplo una lista y queremos saber cuantos elementos contiene, o si queremos ver el tercero o el cuarto, o cualquier posición en particular, entonces podemos usar números naturales (incluyendo el cero) o, como se suele decir, enteros sin signo. Sin embargo, existen aplicaciones en las cuales no es suficiente con los enteros.</description>
-    </item>
-    
-    <item>
-      <title>Representación de números enteros</title>
-      <link>http://aprox.github.io/posts/2019-03-03-representacion-de-enteros/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://aprox.github.io/posts/2019-03-03-representacion-de-enteros/</guid>
-      <description>Existen al menos dos motivos para representar los números, para hablar de ellos y para hacer cuentas con ellos. Bueno, el segundo ejemplo incluye al primero, pero muchas veces representamos números sólo para mencionarlo (o compararlo) sin hacer ningún cálculo, como al medir algo sólo para conocer su longitud. En ambos casos es muy relevante la forma de la representación para la practicidad de su uso.  Resultaría bastante incómodo representar cada número con un símbolo distinto: acordarse de cada uno sería muy difícil.</description>
-    </item>
-    
-    <item>
-      <title>Variables aleatorias</title>
-      <link>http://aprox.github.io/posts/2019-07-14-variables-aleatorias/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://aprox.github.io/posts/2019-07-14-variables-aleatorias/</guid>
-      <description>Existen ocasiones en las que de los fenómenos aleatorios, nos interesan ciertos valores numéricos asiciados a ellos. Por ejemplo, en el juego del truco un jugador puede, antes de ver sus cartas en una mano, preguntarse ¿a partir de qué número me conviene cantar envido (asumuendo en este caso que el contrincante no tema arriesgarse al punto de no querer aunque le convenga)? Es decir, del experimento aleatorio, que consiste en mezclar las cartas y repartirlas, al jugador en cuestión le interesa un número asociado al mismo, que en este caso es la suma de las dos cartas del mismo palo mayores (pero menores a 10).</description>
     </item>
     
   </channel>

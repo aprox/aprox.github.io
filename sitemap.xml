@@ -4,12 +4,17 @@
   
   <url>
     <loc>http://aprox.github.io/</loc>
-    <lastmod>2019-07-14T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://aprox.github.io/posts/contenedores/</loc>
+    <lastmod>2020-01-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://aprox.github.io/posts/</loc>
-    <lastmod>2019-07-14T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -37,23 +42,7 @@
   </url>
   
   <url>
-    <loc>http://aprox.github.io/posts/2019-03-17-espacio-muestral-proba/</loc>
-  </url>
-  
-  <url>
-    <loc>http://aprox.github.io/posts/2019-03-10-punto-flotante/</loc>
-  </url>
-  
-  <url>
-    <loc>http://aprox.github.io/posts/2019-03-03-representacion-de-enteros/</loc>
-  </url>
-  
-  <url>
     <loc>http://aprox.github.io/tags/</loc>
-  </url>
-  
-  <url>
-    <loc>http://aprox.github.io/posts/2019-07-14-variables-aleatorias/</loc>
   </url>
   
 </urlset>
