@@ -1,0 +1,353 @@
+---
+layout: post
+title: Representación de números enteros
+author: nsm
+email: nsm.aprox@gmail.com
+---
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+<p>
+Existen al menos dos motivos para representar los números, para hablar
+de ellos y para hacer cuentas con ellos. Bueno, el segundo ejemplo
+incluye al primero, pero muchas veces representamos números sólo para
+mencionarlo (o compararlo) sin hacer ningún cálculo, como al medir
+algo sólo para conocer su longitud. En ambos casos es muy relevante la
+forma de la representación para la practicidad de su uso.
+</p>
+
+<p>
+Resultaría bastante incómodo representar cada número con un símbolo
+distinto: acordarse de cada uno sería muy difícil. Además, nunca se
+terminaría con el trabajo de determinar todos esos símbolos. Por otra
+parte ¿cómo haríamos para sumar? La representación no nos ayudaría a
+sumar y tendríamos que buscar alguna forma para hacerlo, como
+conseguir un ábaco.
+</p>
+
+<p>
+En el otro extremo, podríamos usar un sólo símbolo, el |. La regla sería
+que la cantidad de veces que aparece repetido es el número que se
+quiere representar. El dos sería ||, el cinco |||||, etc. Esta forma
+parece mucho mejor, de hecho podría hacer bastante fácil la operación
+de suma: para sumar los números n y m escritos con palitos, sólo hace
+falta escribir uno pegado al otro. Claro que también serían demasiado
+largos los número grandes y, además, sería difícil de identificar
+rápidamente números que usamos comúnmente. Comparar el número dos mil
+diecinueve con el dos mil veinte tomaría demasiado tiempo.
+</p>
+
+<p>
+Así, dadas las desventajas de usar un sólo símbolo como las de usar
+infinitos, se impuso la práctica de usar alguna cantidad fija de
+símbolos y asignarles un número de acuerdo a la posición en la que se
+lo escriba.
+</p>
+
+<p>
+Lo primero que hay que determinar entonces, es cuántos símbolos vamos
+a usar. Hay quienes dicen (y suena verosímil) que el hecho de que
+usemos diez para representar los números (es esa la forma en que lo
+aprendemos en el colegio) está relacionado con que tengamos diez dedos
+en las manos. Eso hace que resulte bastante fácil encontrar una manera
+de representar los números del uno al diez sólo usando los dedos (como
+palitos). Sea como fuere, lo común es para nosotros usar los símbolos
+0, 1, &#x2026;, 9, para representar del cero al nueve. Poniendo uno al lado
+del otros varios de estos símbolos (es lo que se llama <i>numeral</i>)
+podemos escribir cualquier número n (entero positivo) interpretándolo
+así:
+</p>
+
+<p>
+\[
+n = \sum_{i=0}^k d_i b^i
+\] 
+</p>
+
+<p>
+donde \(n\) es un número entero positivo, \(k\) es la cantidad de cifras
+(o de <i>dígitos</i>) utilizadas para su representación, \(d_i\) es el dígito
+que está en la posición \(i\) y \(b\) es la "base" de la representación:
+diez en este caso.
+</p>
+
+<p>
+Parar representar cada una de las cifras, lo que necesitamos es que
+haya una cantidad de símbolos suficiente. Pero otra condición para que
+sea práctico su uso, es que tiene que ser fácil distinguirlos (o
+difícil confundirlos). Por ejemplo, hay relojes analógicos que
+representan los segundos con una aguja que apunta a una circunferencia
+dividida en 60 partes para representar cada número entre 0 y 59, pero
+a veces no es tan simple (sobre todo en aquellos donde el movimiento
+de esta aguja es continuo) decidir qué segundo exacto está
+representando (al menos de hacerlo en menos de un segundo) y parece
+mejor aproximar ese número.
+</p>
+
+<p>
+En las computadoras se usan sólo dos símbolos, es decir se usan
+dígitos binarios (La palabra <i>bit</i> proviene de la contracción de
+<i>binary digit</i> <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>). Además, a diferencia de la escritura a mano,
+los números en la computadora tienen una precisión finita, es decir,
+tienen una cantidad fija de bits: se utilizan "palabras" de varios
+bits contiguos, del mismo modo en que en el sistema decimal usamos
+varios dígitos decimales contiguos. Así, por ejemplo, si agrupamos 8
+bits obtenemos un <i>byte</i>.
+</p>
+
+<p>
+ En los <a href="https://software.intel.com/en-us/articles/intel-sdm">manuales de intel</a>, por ejemplo, se usan los nombres
+siguientes:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><i>byte</i></td>
+<td class="org-left">8 bits</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>word</i></td>
+<td class="org-left">16 bits</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>double word</i></td>
+<td class="org-left">32 bits</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>quadword</i></td>
+<td class="org-left">64 bits</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>double quadword</i></td>
+<td class="org-left">128 bits</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Estas convenciones no son universalmente adoptadas. Por ejemplo, en el
+<a href="https://www-cs-faculty.stanford.edu/~knuth/taocp.html">libro de Knuth</a> se usan en cambio:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><i>byte</i></td>
+<td class="org-left">8 bits</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>wyde</i></td>
+<td class="org-left">16 bits</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>tetrabyte</i></td>
+<td class="org-left">32 bits</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>octabyte</i></td>
+<td class="org-left">64 bits</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Como la cantidad de bits en una palabra está fija, también lo está la
+cantidad de números que con ella se puede representar. Así como un bit
+puede representar 2 números, dado que agregando un bit a cualquier
+tira de bits duplicamos la cantidad de números que podemos
+representar, podemos concluir que en una tira de \(n\) bits tenemos
+\(2^n\) números.
+</p>
+
+<p>
+Por ejemplo, en un byte hay 256. Naturalmente, para enteros no
+negativos usamos la misma representación posicional de arriba, pero
+con base igual a dos en lugar d diez. Entonces representamos el 0 como
+\(0000\ 0000\) (es decir, 8 ceros binarios, dejando un espacio para que
+sea más fácil de leer). Dado un byte \(d_7 d_6 d_5 d_4 d_3 d_2 d_1 d_0\), el
+mismo representará (interpretado como entero sin signo, claro) el
+número:
+</p>
+
+
+<p>
+\[
+\sum_{i=0}^7 d_i 2^i
+\]
+</p>
+
+
+<p>
+Pero esto no permite representar los números negativos, y muchas veces
+es necesario representar números enteros con signo (es decir tanto
+positivos como negativos como el cero). Para eso se usan distintas formas.
+</p>
+
+<p>
+<b>Signo + magnitud</b>
+</p>
+
+<p>
+Una de ellas consiste en destinar un bit para representar el
+signo del número, por ejemplo, el bit que se encuentra más a la
+izquierda. En este caso, los bits \(1111\  1111\) ya no serían el número
+256 sino el -127, mientras que el -1 sería \(1000 0001\). 
+</p>
+
+<p>
+Un problema de esto es que el 0 tiene dos representaciones
+distintas. Entonces un byte alcanza para 255 números, no ya 256. Por
+otra parte, esto hace que (la implementación de) las operaciones
+aritméticas sean diferentes según el signo. Por ejemplo (usando
+<i>nibbles</i> o sea tiras de 4 bits), \(0010 + 0011 = 0101\) siguiendo el
+método habitual de la suma aplicada a las tiras de bits, pues \(2 + 3 =
+5\) pero \(1010 + 0011 = 0001\) ya que \(1010\) es \(-2\) y \(-2 + 3 = 1\), lo
+cual no resulta de aplicar ese método a las tiras de bits. Si
+sumáramos de esa forma obtendríamos \(1101\) es decir \(-5\).
+</p>
+
+
+<p>
+<b>Exceso a m</b>
+</p>
+
+<p>
+Esta representación guarda a un número \(n\) como \(n + m\), donde \(m =
+2^{k-1}\) y \(k\), de nuevo, es la cantidad de bits utilizados. Así, si
+tenemos un byte, el número \(-1\) será representado con \(-1 + 2^7 = -1 +
+128 = 127\), o sea \(0111\ 1111\) y el \(1\) con \(1 + 2^7 = 1 + 128 = 129 =
+1000\ 0001\) 
+</p>
+
+<p>
+Es decir, para pasar de un número a su representación en exceso a m,
+lo que hacemos es sumar m y representar el resultado como entero sin
+signo. Si, al contrario, tenemos un número en representación exceso a
+m y queremos ver qué número representa, entonces vemos el entero sin
+signo representado por los bits y le restamos m.
+</p>
+
+<p>
+Si sumamos ambos números \(-1\) + \(1\) obtenemos: \(0111\ 1111 + 1000\
+0001 = 1\ 0000\ 0000\). Pero como se trata de un byte ignoramos el uno
+de la izquierda (el carry) y nos queda \(0000\ 0000\) que es \(256 \mod 256
+= 0\). Este número no representa 0 sino -128. Pero podemos sumarle 128
+fácilmente sumando 1 al bit más significativo. De esta forma puede
+realizarse la suma fácilmente.
+</p>
+
+
+<p>
+<b>Complemento a uno</b>
+</p>
+
+<p>
+El complemento a uno de un número es el resultado de invertir todo sus
+bits. Por ejemplo \(0101\ 1100 \to 1010\ 0011\). De aquí proviene una
+forma de representar (por ejemplo en un byte) en la cual los números
+positivos hasta 127 (es decir todos aquellos cuyo bit más
+significativo es 0) se representan de la misma forma que los enteros
+sin signo. Pero los negativos se representan mediante su complemento a
+uno, es decir invirtiendo todos sus bits. Así, el \(1\) se representa,
+de nuevo, con \(0000\ 0001\), pero el \(-1\) como \(1111\ 1110\), que no es
+otra cosa que el complemento a uno del anterior. De este modo, dada una
+representación en bit de un número en esta forma, sabemos si es
+positivo o negativo mirando el último bit.
+</p>
+
+<p>
+Para sumar dos números podemos usar la suma común bit a bit, e
+incrementar el resultado si se produce un carry. Si los números son
+ambos positivos, entonces no hay carry porque ambos tendrán 0 en el
+último bit. Veamos por ejemplo la suma \(33 + (-31) = 2\)
+</p>
+
+<p>
+\[33 = 0010\ 0001\]
+\[31 = 0001\ 1111\]
+\[-31 = 1110\ 0000\]
+</p>
+
+<p>
+Entonces la suma es \(0000\ 0001\) más el bit del carry, o sea \(0000\
+0010 = 2\).
+</p>
+
+<p>
+Una desventaja de complemento a uno es que el cero tiene dos
+representaciones.
+</p>
+
+<p>
+<b>Complemento a dos</b>
+</p>
+
+<p>
+Por último, complemento a dos. En este caso, al igual que con
+complemento a uno, los números positivos hasta \(2^k-1\) se representan
+igual que la representación sin signo. Los negativos se representa
+como el complemento a uno, mas uno. Por ejemplo (nuevamente en bytes)
+el \(-1\) es \(1111\ 1111\) ya que el complemento a uno de \(-1\) es, como
+vimos, \(1111\ 1110\) y \(1111\ 1111 = 1111\ 1110 + 0000\ 0001\).
+</p>
+
+<p>
+Esto hace que la suma de dos números representados de esta forma se
+implemente en forma similar a la suma sin signo. Del mismo modo que en
+complemento a uno, los números positivos se suman igual. Pero en este
+caso la suma de números negativos (o positivos y negativos) también se
+realiza bit a bit como es habitual. La diferencia está en el overflow.
+</p>
+
+<p>
+Dado que el máximo sin signo es 255, cualquier suma cuya resultado sea
+mayor produce un overflow. Para detectarlo en este caso basta fijarse
+si se produce un carry afuera del bit más significativo. En cambio, en
+la suma con números complemento a dos esta regla es diferente. Veamos,
+por ejemplo, la suma \(-1 + -1\), estos es \(1111\ 1111 + 1111\ 1111 =
+1111\ 1110\) con <i>carry</i>. Sin embargo, aquí no hubo overflow y \(1111\
+1110 = -2\) en complemento a dos. Para que haya overflow en complemento
+a dos tiene que ocurrir que <i>el carry hacia el bit del signo (el bit
+más significativo) sea diferente al carry fuera de la representación</i>.
+</p>
+
+<p>
+Por ejemplo \(64 = 0100\ 0000\) y \(65 = 0100\ 0001\). Si sumamos ambos
+números obtenemos \(1000\ 0001\). Pero, en esta operación se
+produjo un carry hacia el bit del signo, a la vez que <b>no</b> hubo carry
+fuera del byte. Así, hubo un overflow. En efecto \(1000\ 0001 = -127\),
+pero \(-127 \neq 64 + 65 = 129\).
+</p>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+En el contexto de la teoría de la información, la palabra <i>bit</i>
+tiene un sentido distinto. 
+</p></div></div>
+
+
+</div>
+</div>

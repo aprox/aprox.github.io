@@ -1,0 +1,303 @@
+---
+layout: post
+title: Espacio muestral y de probabilidad
+author: nsm
+email: nsm.aprox@gmail.com
+---
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+<p>
+Usada para modelar distinto tipos de fenómenos, la teoría de la
+probabilidad permite muchas aplicaciones de la matemática.
+</p>
+
+
+<p>
+En los libros introductorios al tema, es muy común encontrar entre los
+primeros ejemplos el de tirar una moneda y ver cómo cae. Predecir
+exactamente este resultado en una situación particular conociendo la
+posición en que se la arroja, la fuerza que se le aplica, el lugar
+donde se lo hace, las características del entorno, etc., puede que sea
+factible, pero también bastante difícil. Sin embargo, aún sin tener
+acceso a todos esos datos del experimento (ni al conocimiento que
+permita con ellos hacer esta predicción), puede encontrarse no
+obstante alguna regularidad.
+</p>
+
+
+
+<p>
+La parte que quedará arriba será cara o ceca. Si se tira una cantidad
+suficiente de veces, es esperable que la cantidad de veces que cayó
+una se acerca la de veces que cayó la otra (se acerque en relación al
+número total de veces que se lo hizo).
+</p>
+
+
+
+<p>
+He aquí, entonces, un <i>experimento</i>, que es básicamente tirar la
+moneda y ver cómo cayó. Tenemos un <i>modelo</i> abstracto, que consiste en
+considerar que hay dos posibles resultados. Y también atribuimos una
+probabilidad a cada resultado, cosa a la que aludimos al mencionar su
+frecuencia. Por último, también supusimos que sus frecuencias serían
+similares.
+</p>
+
+<p>
+Esta claro, por otra parte, que la moneda puede quedar de canto (o
+incluso que por algún motivo ni si quiera podamos ver cómo
+quedó). Tales casos escapan obviamente al modelo utilizado. Podría en
+cambio usarse otro, que considere esos resultados y su probabilidad de
+ocurrencia, pero no parece una buena idea: como dice el libro de
+Feller, esta convención simplifica el modelo sin afectar su
+aplicabilidad.
+</p>
+
+<p>
+El hecho de que no sepamos cómo va a resultar el experimento, pero que
+sepamos cuales son los resultados posibles y sus relativas
+frecuencias, le otorgan quizá a la moneda una utilidad adicional a la
+que está implícita en su uso más frecuente y es estudiado por los
+economistas. Y la aplicación más conocida de esa utilidad tal vez sea
+su utilización para determinar qué equipo saca en cada partido de
+fútbol. Si los jugadores de ambos equipos supieran cómo fuera a
+terminar la moneda, probablemente no aceptarían usarla para eso, y
+solicitarían otro método.
+</p>
+
+<p>
+Veamos ahora otra interesante aplicación de la teoría, que se describe
+en el libro de Mitzenmacher y Upfal <i>Probability and Computing</i>.
+</p>
+
+<p>
+Supongamos una persona hizo un programa que multiplica
+<a href="https://es.wikipedia.org/wiki/Monomio">monomios</a> y devuelve un
+<a href="https://es.wikipedia.org/wiki/Polinomio">polinomio</a>. Por ejemplo
+recibe
+\[ (x+1)(x-2)(x+3)(x-4)(x+5)(x-6) \]
+</p>
+
+<p>
+y devuelve
+\[ x^6 - 7x^3 + 25 \]
+</p>
+
+<p>
+Probablemente esta persona querrá estar seguro de que su programa no
+tenga errores, y por ende querrá cuando menos chequear este
+resultado. Puede hacerlo a mano, agarrar lápiz y papel, multiplicar él
+mismo los monomios, llevar el polinomio resultante a su forma canónica
+y comparar ambas respuestas. Este método no otorga una garantía plena,
+ya que puede equivocarse en hacer la cuenta. Además, podría tratarse
+de otro polinomio de grado muy grande, en cuyo caso podría no resultar
+tan atractivo hacer la cuenta a mano. También podría que quiera hacer
+lo mismo con muchos resultados del programa aplicado a diferentes
+parámetros de entrada. En este caso podría hacer (ya que es un
+programador) un programa que haga ese chequeo, es decir, que exprese
+el producto de los monomios en forma canónica. O sea, otro programa
+que haga lo mismo que el que había hecho antes. Esto puede aumentar la
+confianza de él en el programa, aunque a sabiendas de que puede haber
+pasado que ambos programas eran incorrectos y fallaban de igual
+manera.
+</p>
+
+<p>
+En fin, la idea del ejemplo es utilizar el azar para, si bien con
+cierto grado de incertidumbre aun, poder chequear el programa con
+menos trabajo que volviéndolo a hacer.
+</p>
+
+
+<p>
+Llamemos \(p(x)\) y \(q(x)\) a los polinomios en cuestión. Y sea \(d\) el
+grado de aquél de los dos con mayor grado (por su puesto, si no tienen
+el mismo grado es porque el programa falló). El algoritmo propuesto
+consiste en tomar al azar un número entre \(1\) y \(100d\), cada uno con
+la misma probabilidad. Es cierto que el objetivo de este post era
+definir la probabilidad y ahora estoy usando es palabra antes de
+definirla, pero el punto acá es sólo ver una aplicación, y la idea de
+misma probabilidad de estos resultados es, igual que más arriba,
+parecida a decir que si repitiéramos muchas veces el experimento, la
+cantidad de veces que sale cada número es similar.
+</p>
+
+<p>
+Luego de elegir ese número, evalúa ambos polinomios, \(p\) y \(q\), en ese
+número y compara ambos resultados (claro estamos asumiendo que evaluar
+ambos polinomios es menos trabajo que hacer el producto de los
+monomios, pero suena razonable, no?). Si el resultado diferente, se
+concluye que los polinomios son diferentes. Si no, que no.
+</p>
+
+<p>
+Y sí, podría pasar entonces que este algoritmo se equivoque: que los
+polinomios sean distintos, pero que evaluados justo en ese punto
+dieran el mismo valor. Lo que ahora nos interesa es tener alguna idea
+de la frecuencia con la que se puede equivocar.
+</p>
+
+<p>
+Si los polinomios son iguales, entonces (asumimos que podemos evaluar
+los polinomios sin equivocarnos) la respuesta obtenida va a ser que
+evalúan el mismo valor, y es correcta.
+</p>
+
+
+<p>
+Si en cambio no lo son, el algoritmo dará una respuesta incorrecta si,
+por casualidad, \(p(x) = q(x)\). Pero la respuesta será correcta si
+\(p(x) \neq q(x)\),
+</p>
+
+
+<p>
+Es decir que el desacierto tiene lugar cuando \(p(x) - q(x) =
+0\). Llamemos \(r(x) = p(x) - q(x)\). Este nuevo polinomio \(r(x)\) tiene
+grado a lo sumo \(d\) (pues es la resta de dos polinomios de grado a lo
+sumo \(d\). Por otra parte, el álgebra nos garantiza que hay a lo sumo
+\(d\) números para los cuales \(r(x)\) vale cero (esos números son sus
+raíces). Por lo tanto, en este caso no puede haber más de \(d\) números
+de \(1\) a \(100d\) que den lugar a este resultado. Y entonces la
+frecuencia con que el algoritmo se equivoca no puede ser mayor a 1
+cada 100 (Y por su puesto que podemos modificar esta frecuencia
+modificando el rango de donde elegimos aleatoriamente).
+</p>
+
+
+<p>
+Este ejemplo muestra algo más que vamos a tener en cuenta. Si bien la
+cantidad de los resultados posibles del experimento son \(100d\),
+correspondientes a los posibles números que pueden ser escogidos
+aleatoriamente, nosotros miramos en conjunto aquellos resultados que
+corresponden a raíces de \(r(x)\), y por otro aquellos que no. Y
+designamos el primer conjunto como "el algoritmo dio una respuesta
+incorrecta" y al segundo como "el algoritmo dió la respuesta
+correcta".
+</p>
+
+<p>
+Los dos ejemplos usados tienen en común que la cantidad de resultados
+de los experimentos era finita. Podemos dar ejemplos distintos.
+</p>
+
+
+<p>
+Supongamos que hay una pelota y un aro de basquet, y realizamos el
+experimento siguiente: lanzamos la pelota una y otra vez hasta
+embocarla. ¿Cuántos resultados posibles hay? Estamos asumiendo que
+volvemos a tirar sin interrumpir el experimento hasta que la pelota
+entra al aro. En este experimento hay infinitos resultados, porque no
+hay un número \(k\) tal que diga "a los \(k\) intentos ya voy a haber
+terminado", porque podría no haber pasado, cualquiera sea el \(k\). Pero
+a los resultados de este experimento los podemos enumerar, es decir,
+podemos asignar a cada uno un número natural (por ejemplo, el número
+de intentos llevados a cabo).
+</p>
+
+
+<p>
+Como último ejemplo consideremos el tiempo transcurrido entre que
+alguien que quiere tomar un colectivo llega a la parada, hasta que se
+sube. Este número puede ser muy difícil de obtener, y usualmente nos
+manejamos con aproximaciones, redondeando en número de minutos, o se
+segundos, etc. Pero si consideramos el número exacto ¿cuántos
+resultados son posibles? De modo similar al ejemplo anterior, no hay
+una cota para el tiempo de espera. Sin embargo, en este caso no es
+posible enumerar los resultados: no hay suficientes números naturales
+como para asignar uno a cada posible resultado.
+</p>
+
+
+<p>
+Teniendo en cuenta estos <i>experimentos</i> puestos por ejemplo, que
+podrían definirse como un procedimiento con resultado incierto, pero
+reproducible, definimos pues <i>eventos</i> (simples) como los elementos
+del conjunto de los resultados de un experimento. Cada uno de estos
+experimentos está asociado a un conjunto específico de resultados:
+"cara" o "ceca" en el primer ejemplo, en el segundo cada uno de los
+números que pueden ser elegidos: \(1, 2, 3, \dots, 100d\). En el
+tercero, los resultados se pueden poner en correspondencia con los
+número naturales y en el último con los reales positivos.
+</p>
+
+
+<p>
+A este conjunto de resultados se llama <b>espacio muestral</b> y se lo suele
+denotar con la letra \(\Omega\).
+</p>
+
+
+
+<p>
+Además de estos eventos <i>simples</i>, también se definen los eventos
+compuestos (frecuentemente eventos a secas), que son conjuntos de
+eventos simples. Por ejemplo, el conjunto de los números en el espacio
+muestral que a su vez son raíces de \(r(x)\) son un <i>evento</i>
+(compuesto), que denominamos "el algoritmo falló", en el segundo
+experimento. Otro evento sería "el número de tiros al aro de basquet
+hasta embocarla fue par". O, en el último: el colectivo tardo más de
+15 minutos en pasar.
+</p>
+
+
+
+<p>
+Un concepto utilizado por los matemáticos para definir un espacio de
+probabilidad es el de $&sigma;$-álgebra.
+</p>
+
+
+<p>
+Dado cualquier conjunto \(\Omega\), el <b>conjunto de partes</b> de \(S\),
+denotado \(\mathcal{P}(\Omega)\) es el conjunto de todos los subconjunto
+de \(\Omega\), es decir:
+</p>
+
+<p>
+<b>DEF</b> Sea \(\Omega\) un conjunto. Una $&sigma;$-álgebra
+\(\mathcal{F}\) sobre \(\Omega\) es un subconjunto de \(\mathcal{P}\) que
+cumple:
+</p>
+
+<ul class="org-ul">
+<li>\(\Omega \in \mathcal{F}\)</li>
+<li>Si \(A \in \mathcal{F}\) entonces \(A^\mathcal{c} \in \mathcal{F}\), donde \(A^\mathcal{c}\) es el complemento de \(A\)</li>
+<li>Si \(A_1, A_2, \dots\) es una sucesión de elementos de \(\mathcal{F}\),
+entonces:
+\[ \bigcup_{i=1}^{\infty} A_i \in \mathcal{F} \]</li>
+</ul>
+
+
+<p>
+Y por último:
+</p>
+
+<p>
+<b>DEF</b> Un <i>espacio de probabilidad</i> es una terna \((\Omega, \mathcal{F},
+\Pr)\), donde \(\Omega\) es un conjunto, \(\mathcal{F}\) es una
+$&sigma;$-álgebra sobre \(\Omega\) y \(\Pr\) es una función \(\Pr:
+\mathcal{F} \to \mathbb{R}\) que satisface las siguientes condiciones:
+</p>
+
+<ul class="org-ul">
+<li>\(\Pr(\Omega) = 1\)</li>
+
+<li>Si \((A_n)_{n\geq 1}\) es una sucesión de elementos de \(\mathcal{F}\)
+disyuntos dos a dos (o sea que \(A_i \cap A_j = \emptyset\) para todos
+\(i\), \(j\) distintos), entonces:
+\[
+  \Pr\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} \Pr(A_i)
+  \]</li>
+<li>0 &le; Pr(A) &le; 1</li>
+</ul>
+
+
+<p>
+Como los nombres lo sugieren, \(\Omega\) es lo que se interpretará como
+el conjunto de resultados, es decir, el espacio muestral,
+\(\mathcal{F}\) se interpretará como el conjunto de eventos. \(\Pr\) es
+la función de probabilidad.
+</p>
