@@ -37,7 +37,7 @@
 <meta itemprop="description" content="Los contenedores sirven para guardar secuencias de objetos. Si no tuvieramos contenedores, tendríamos que recordar el lugar de cada uno para cada vez que necesitamos usarlo. En cambio, podemos usar una colección y sólo recordar el lugar donde está ella. Esto implica, sin embargo, que entonces haya que tener que buscarlo dentro de ese contenedor cuando lo necesitemos. Pero eso es mejor a tener que anotar dónde está cada cosa.">
 <meta itemprop="datePublished" content="2020-01-30T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-01-30T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2749">
+<meta itemprop="wordCount" content="2746">
 
 
 
@@ -181,7 +181,7 @@ global ni en <code>std</code>. Pero en R también podemos hacer eso:
 </div>
 
 <p>
-Estas dos funciones, <code>Reduce</code> y <code>std::accumulate</code> son bastante
+Estas dos funciones, <code>Reduce</code> y <a href="https://es.cppreference.com/w/cpp/algorithm/accumulate"><code>std::accumulate</code></a> son bastante
 parecidas (hay una función <a href="https://en.cppreference.com/w/cpp/algorithm/reduce"><code>std::reduce</code></a>, pero parece no estar
 soportada en todas las implementaciones todavía). La idea es que
 tenemos una colección, una operación binaria y un valor inicial. Esta
@@ -388,7 +388,7 @@ Podemos entonces hace algo mejor:
 </p>
 <div class="org-src-container">
 <pre class="src src-c++"><span style="font-weight: bold;">template</span>&lt;<span style="font-weight: bold; text-decoration: underline;">size_t</span> <span style="font-weight: bold; font-style: italic;">N</span>&gt;
-<span style="font-weight: bold; text-decoration: underline;">bool</span> <span style="font-weight: bold;">is_local_extremum</span>(<span style="font-weight: bold;">const</span> <span style="font-weight: bold; text-decoration: underline;">int</span> (&amp;<span style="font-weight: bold; font-style: italic;">x</span>)[N], <span style="font-weight: bold; text-decoration: underline;">size_t</span> <span style="font-weight: bold; font-style: italic;">n</span>);
+<span style="font-weight: bold; text-decoration: underline;">bool</span> <span style="font-weight: bold;">is_local_extremum</span>(<span style="font-weight: bold;">const</span> <span style="font-weight: bold; text-decoration: underline;">int</span> (&amp;<span style="font-weight: bold; font-style: italic;">x</span>)[N], <span style="font-weight: bold; text-decoration: underline;">size_t</span> <span style="font-weight: bold; font-style: italic;">position</span>);
 </pre>
 </div>
 
@@ -402,7 +402,7 @@ array en el template y no hacerlo parámetro también? Y así escribe:
 
 <div class="org-src-container">
 <pre class="src src-c++"><span style="font-weight: bold;">template</span>&lt;<span style="font-weight: bold;">typename</span> <span style="font-weight: bold; text-decoration: underline;">T</span>,<span style="font-weight: bold; text-decoration: underline;">size_t</span> <span style="font-weight: bold; font-style: italic;">N</span>&gt;
-<span style="font-weight: bold; text-decoration: underline;">bool</span> <span style="font-weight: bold;">is_local_extremum</span>(<span style="font-weight: bold;">const</span> <span style="font-weight: bold; text-decoration: underline;">T</span> (&amp;<span style="font-weight: bold; font-style: italic;">x</span>)[N], <span style="font-weight: bold; text-decoration: underline;">size_t</span> <span style="font-weight: bold; font-style: italic;">n</span>);
+<span style="font-weight: bold; text-decoration: underline;">bool</span> <span style="font-weight: bold;">is_local_extremum</span>(<span style="font-weight: bold;">const</span> <span style="font-weight: bold; text-decoration: underline;">T</span> (&amp;<span style="font-weight: bold; font-style: italic;">x</span>)[N], <span style="font-weight: bold; text-decoration: underline;">size_t</span> <span style="font-weight: bold; font-style: italic;">position</span>);
 </pre>
 </div>
 
@@ -413,7 +413,7 @@ formas podría mejorar: podríamos usar <a href="https://en.cppreference.com/w/c
 arreglo común y silvestre. Con esto básicamente accedemos a varias
 "funcionalidades" que están ya provistas en la stl. En particular,
 tenemos el método <code>at</code> que accede al enésimo elemento pero tirando una
-excepción <code>std::out_of_range</code> si la posión pedida está fuera del
+excepción <a href="https://es.cppreference.com/w/cpp/error/out_of_range"><code>std::out_of_range</code></a> si la posión pedida está fuera del
 rango. Yo creo que esto está muy bien porque si alguien pide una
 posición fuera del rango algo anda mal y hay que arreglar eso.
 </p>
@@ -467,7 +467,7 @@ no andar copiándolo cada vez que pasamo de una función a otra.
 
 <p>
 Para esto la stl provee una cantidad de distintos contenedores, el
-probablemente mas usado es el <code>std::vector</code>:
+probablemente mas usado es el <a href="https://es.cppreference.com/w/cpp/container/vector"><code>std::vector</code></a>:
 </p>
 
 <div class="org-src-container">
@@ -528,9 +528,9 @@ un contenedor de memoria contigua hay que mover todos los demás, con
 lo que resulta una operación \(O(n)\). En cambio, en una lista enlazada
 es \(O(1)\) porque es sólo cuestión de crear un nodo y actualizar los
 punteros para insertarlo en la posición que sea. Entre los
-contenedores de este tipo se incluyen <code>std::list</code> (double linked) y
-<code>std::forward_list</code> (singly-linked), <code>std::deque</code>, <code>std::set</code> y
-<code>std::map</code>.
+contenedores de este tipo se incluyen <a href="https://es.cppreference.com/w/cpp/container/list"><code>std::list</code></a> (double linked) y
+<a href="https://es.cppreference.com/w/cpp/container/forward_list"><code>std::forward_list</code></a> (singly-linked), <a href="https://es.cppreference.com/w/cpp/container/deque"><code>std::deque</code></a>, <a href="https://es.cppreference.com/w/cpp/container/set"><code>std::set</code></a> y
+<a href="https://es.cppreference.com/w/cpp/container/map"><code>std::map</code></a>.
 </p>
 
 
@@ -595,8 +595,8 @@ it-&gt;second <span style="font-weight: bold; font-style: italic;">// </span><sp
 
 <p>
 Un <code>std::set</code> es como un map pero sin valores. También
-existen los contenedores <code>std::multiset</code> y <code>std::multimap</code> que permiten
-guardar más de un aclave con el mismo valor.
+existen los contenedores <a href="https://es.cppreference.com/w/cpp/container/multiset"><code>std::multiset</code></a> y <a href="https://es.cppreference.com/w/cpp/container/multimap"><code>std::multimap</code></a> que permiten
+guardar más de una clave equivalente.
 </p>
 
 <p>
