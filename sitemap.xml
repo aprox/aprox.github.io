@@ -8,6 +8,16 @@
   </url>
   
   <url>
+    <loc>http://aprox.github.io/tags/c&#43;&#43;/</loc>
+    <lastmod>2020-01-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://aprox.github.io/tags/contenedores/</loc>
+    <lastmod>2020-01-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://aprox.github.io/posts/contenedores/</loc>
     <lastmod>2020-01-30T00:00:00+00:00</lastmod>
   </url>
@@ -15,6 +25,16 @@
   <url>
     <loc>http://aprox.github.io/posts/</loc>
     <lastmod>2020-01-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://aprox.github.io/tags/</loc>
+    <lastmod>2020-01-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://aprox.github.io/tags/probabilidad/</loc>
+    <lastmod>2019-07-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -28,21 +48,28 @@
   </url>
   
   <url>
+    <loc>http://aprox.github.io/tags/aritm%C3%A9tica-computacional/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://aprox.github.io/posts/punto-flotante/</loc>
     <lastmod>2019-03-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://aprox.github.io/posts/representacion-de-enteros/</loc>
+    <loc>http://aprox.github.io/tags/punto-flotante/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://aprox.github.io/tags/n%C3%BAmeros-enteros/</loc>
     <lastmod>2019-03-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://aprox.github.io/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>http://aprox.github.io/tags/</loc>
+    <loc>http://aprox.github.io/posts/representacion-de-enteros/</loc>
+    <lastmod>2019-03-03T00:00:00+00:00</lastmod>
   </url>
   
 </urlset>

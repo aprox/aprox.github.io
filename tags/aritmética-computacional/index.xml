@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aritmética computacional on Aprox</title>
+    <link>http://aprox.github.io/tags/aritm%C3%A9tica-computacional/</link>
+    <description>Recent content in aritmética computacional on Aprox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-ar</language>
+    <lastBuildDate>Sun, 10 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://aprox.github.io/tags/aritm%C3%A9tica-computacional/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Números de punto flotante</title>
+      <link>http://aprox.github.io/posts/punto-flotante/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://aprox.github.io/posts/punto-flotante/</guid>
+      <description>En otro post vimos algunas formas usadas para representar números enteros en las computadoras. Pero muchas veces necesitamos representar número reales, no sólo enteros. Es decir, si tenemos por ejemplo una lista y queremos saber cuantos elementos contiene, o si queremos ver el tercero o el cuarto, o cualquier posición en particular, entonces podemos usar números naturales (incluyendo el cero) o, como se suele decir, enteros sin signo. Sin embargo, existen aplicaciones en las cuales no es suficiente con los enteros.</description>
+    </item>
+    
+    <item>
+      <title>Representación de números enteros</title>
+      <link>http://aprox.github.io/posts/representacion-de-enteros/</link>
+      <pubDate>Sun, 03 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://aprox.github.io/posts/representacion-de-enteros/</guid>
+      <description>Existen al menos dos motivos para representar los números, para hablar de ellos y para hacer cuentas con ellos. Bueno, el segundo ejemplo incluye al primero, pero muchas veces representamos números sólo para mencionarlo (o compararlo) sin hacer ningún cálculo, como al medir algo sólo para conocer su longitud. En ambos casos es muy relevante la forma de la representación para la practicidad de su uso.  Resultaría bastante incómodo representar cada número con un símbolo distinto: acordarse de cada uno sería muy difícil.</description>
+    </item>
+    
+  </channel>
+</rss>

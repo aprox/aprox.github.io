@@ -6,9 +6,64 @@
     <description>Recent content in Tags on Aprox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-ar</language>
+    <lastBuildDate>Thu, 30 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://aprox.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>http://aprox.github.io/tags/c&#43;&#43;/</link>
+      <pubDate>Thu, 30 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://aprox.github.io/tags/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>contenedores</title>
+      <link>http://aprox.github.io/tags/contenedores/</link>
+      <pubDate>Thu, 30 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://aprox.github.io/tags/contenedores/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>probabilidad</title>
+      <link>http://aprox.github.io/tags/probabilidad/</link>
+      <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://aprox.github.io/tags/probabilidad/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aritmética computacional</title>
+      <link>http://aprox.github.io/tags/aritm%C3%A9tica-computacional/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://aprox.github.io/tags/aritm%C3%A9tica-computacional/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>punto flotante</title>
+      <link>http://aprox.github.io/tags/punto-flotante/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://aprox.github.io/tags/punto-flotante/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>números enteros</title>
+      <link>http://aprox.github.io/tags/n%C3%BAmeros-enteros/</link>
+      <pubDate>Sun, 03 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://aprox.github.io/tags/n%C3%BAmeros-enteros/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

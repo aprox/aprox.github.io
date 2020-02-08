@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>números enteros on Aprox</title>
+    <link>http://aprox.github.io/tags/n%C3%BAmeros-enteros/</link>
+    <description>Recent content in números enteros on Aprox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-ar</language>
+    <lastBuildDate>Sun, 03 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://aprox.github.io/tags/n%C3%BAmeros-enteros/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Representación de números enteros</title>
+      <link>http://aprox.github.io/posts/representacion-de-enteros/</link>
+      <pubDate>Sun, 03 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://aprox.github.io/posts/representacion-de-enteros/</guid>
+      <description>Existen al menos dos motivos para representar los números, para hablar de ellos y para hacer cuentas con ellos. Bueno, el segundo ejemplo incluye al primero, pero muchas veces representamos números sólo para mencionarlo (o compararlo) sin hacer ningún cálculo, como al medir algo sólo para conocer su longitud. En ambos casos es muy relevante la forma de la representación para la practicidad de su uso.  Resultaría bastante incómodo representar cada número con un símbolo distinto: acordarse de cada uno sería muy difícil.</description>
+    </item>
+    
+  </channel>
+</rss>

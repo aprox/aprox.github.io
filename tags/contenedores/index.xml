@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>contenedores on Aprox</title>
+    <link>http://aprox.github.io/tags/contenedores/</link>
+    <description>Recent content in contenedores on Aprox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-ar</language>
+    <lastBuildDate>Thu, 30 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://aprox.github.io/tags/contenedores/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Contenedores en C&#43;&#43;</title>
+      <link>http://aprox.github.io/posts/contenedores/</link>
+      <pubDate>Thu, 30 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://aprox.github.io/posts/contenedores/</guid>
+      <description>Los contenedores sirven para guardar colecciones de objetos. Si no tuvieramos contenedores, tendríamos que recordar el lugar de cada uno para cada vez que necesitamos usarlo. En cambio, podemos usar una colección y sólo recordar el lugar donde está ella. Esto implica, sin embargo, que entonces haya que tener que buscarlo dentro de ese contenedor cuando lo necesitemos. Pero eso es mejor a tener que anotar dónde está cada cosa.</description>
+    </item>
+    
+  </channel>
+</rss>

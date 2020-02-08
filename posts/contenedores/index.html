@@ -28,22 +28,22 @@
     
     
     <meta property="og:title" content="Contenedores en C&#43;&#43;" />
-<meta property="og:description" content="Los contenedores sirven para guardar secuencias de objetos. Si no tuvieramos contenedores, tendríamos que recordar el lugar de cada uno para cada vez que necesitamos usarlo. En cambio, podemos usar una colección y sólo recordar el lugar donde está ella. Esto implica, sin embargo, que entonces haya que tener que buscarlo dentro de ese contenedor cuando lo necesitemos. Pero eso es mejor a tener que anotar dónde está cada cosa." />
+<meta property="og:description" content="Los contenedores sirven para guardar colecciones de objetos. Si no tuvieramos contenedores, tendríamos que recordar el lugar de cada uno para cada vez que necesitamos usarlo. En cambio, podemos usar una colección y sólo recordar el lugar donde está ella. Esto implica, sin embargo, que entonces haya que tener que buscarlo dentro de ese contenedor cuando lo necesitemos. Pero eso es mejor a tener que anotar dónde está cada cosa." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://aprox.github.io/posts/contenedores/" />
 <meta property="article:published_time" content="2020-01-30T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-01-30T00:00:00+00:00" />
 <meta itemprop="name" content="Contenedores en C&#43;&#43;">
-<meta itemprop="description" content="Los contenedores sirven para guardar secuencias de objetos. Si no tuvieramos contenedores, tendríamos que recordar el lugar de cada uno para cada vez que necesitamos usarlo. En cambio, podemos usar una colección y sólo recordar el lugar donde está ella. Esto implica, sin embargo, que entonces haya que tener que buscarlo dentro de ese contenedor cuando lo necesitemos. Pero eso es mejor a tener que anotar dónde está cada cosa.">
+<meta itemprop="description" content="Los contenedores sirven para guardar colecciones de objetos. Si no tuvieramos contenedores, tendríamos que recordar el lugar de cada uno para cada vez que necesitamos usarlo. En cambio, podemos usar una colección y sólo recordar el lugar donde está ella. Esto implica, sin embargo, que entonces haya que tener que buscarlo dentro de ese contenedor cuando lo necesitemos. Pero eso es mejor a tener que anotar dónde está cada cosa.">
 <meta itemprop="datePublished" content="2020-01-30T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-01-30T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2746">
+<meta itemprop="wordCount" content="2779">
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="C&#43;&#43;,contenedores," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Contenedores en C&#43;&#43;"/>
-<meta name="twitter:description" content="Los contenedores sirven para guardar secuencias de objetos. Si no tuvieramos contenedores, tendríamos que recordar el lugar de cada uno para cada vez que necesitamos usarlo. En cambio, podemos usar una colección y sólo recordar el lugar donde está ella. Esto implica, sin embargo, que entonces haya que tener que buscarlo dentro de ese contenedor cuando lo necesitemos. Pero eso es mejor a tener que anotar dónde está cada cosa."/>
+<meta name="twitter:description" content="Los contenedores sirven para guardar colecciones de objetos. Si no tuvieramos contenedores, tendríamos que recordar el lugar de cada uno para cada vez que necesitamos usarlo. En cambio, podemos usar una colección y sólo recordar el lugar donde está ella. Esto implica, sin embargo, que entonces haya que tener que buscarlo dentro de ese contenedor cuando lo necesitemos. Pero eso es mejor a tener que anotar dónde está cada cosa."/>
 
       
     
@@ -119,7 +119,7 @@
     <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 <p>
-Los contenedores sirven para guardar secuencias de objetos. Si no
+Los contenedores sirven para guardar colecciones de objetos. Si no
 tuvieramos contenedores, tendríamos que recordar el lugar de cada uno
 para cada vez que necesitamos usarlo. En cambio, podemos usar una
 colección y sólo recordar el lugar donde está ella. Esto implica, sin
@@ -601,11 +601,22 @@ guardar más de una clave equivalente.
 
 <p>
 Por último, podemos mencionar además los <i>container adaptors</i> que son
-contenedores que tiene una interfaz típicamente más restrigida, pero
-adecuada a alguna aplicación en particular: <a href="https://es.cppreference.com/w/cpp/container/stack"><code>std::stack</code></a>, <a href="https://es.cppreference.com/w/cpp/container/queue"><code>std::queue</code></a>
-y <a href="https://es.cppreference.com/w/cpp/container/priority_queue"><code>std::priority_queue</code></a>.
+comor contenedores, tiene una interfaz típicamente más restrigida,
+aunque pero adecuada a alguna aplicación en particular: <a href="https://es.cppreference.com/w/cpp/container/stack"><code>std::stack</code></a>,
+<a href="https://es.cppreference.com/w/cpp/container/queue"><code>std::queue</code></a> y <a href="https://es.cppreference.com/w/cpp/container/priority_queue"><code>std::priority_queue</code></a>. Sin embargo, estos últimos no
+pueden iterarse como el resto de los contenedores, no tienen <code>begin</code> y
+<code>end</code>. Se implementan con algún contenedor de los mencionados antes,
+pero exponiend una interfaz distinta.
 </p>
 <ul class="pa0">
+  
+   <li class="list">
+     <a href="/tags/c&#43;&#43;" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C&#43;&#43;</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/contenedores" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">contenedores</a>
+   </li>
   
 </ul>
 <div class="mt6">

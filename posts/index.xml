@@ -17,7 +17,7 @@
       <pubDate>Thu, 30 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>http://aprox.github.io/posts/contenedores/</guid>
-      <description>Los contenedores sirven para guardar secuencias de objetos. Si no tuvieramos contenedores, tendríamos que recordar el lugar de cada uno para cada vez que necesitamos usarlo. En cambio, podemos usar una colección y sólo recordar el lugar donde está ella. Esto implica, sin embargo, que entonces haya que tener que buscarlo dentro de ese contenedor cuando lo necesitemos. Pero eso es mejor a tener que anotar dónde está cada cosa.</description>
+      <description>Los contenedores sirven para guardar colecciones de objetos. Si no tuvieramos contenedores, tendríamos que recordar el lugar de cada uno para cada vez que necesitamos usarlo. En cambio, podemos usar una colección y sólo recordar el lugar donde está ella. Esto implica, sin embargo, que entonces haya que tener que buscarlo dentro de ese contenedor cuando lo necesitemos. Pero eso es mejor a tener que anotar dónde está cada cosa.</description>
     </item>
     
     <item>
