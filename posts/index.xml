@@ -26,7 +26,7 @@
       <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>http://aprox.github.io/posts/variables-aleatorias/</guid>
-      <description>Existen ocasiones en las que de los fenómenos aleatorios, nos interesan ciertos valores numéricos asiciados a ellos. Por ejemplo, en el juego del truco un jugador puede, antes de ver sus cartas en una mano, preguntarse ¿a partir de qué número me conviene cantar envido (asumuendo en este caso que el contrincante no tema arriesgarse al punto de no querer aunque le convenga)? Es decir, del experimento aleatorio, que consiste en mezclar las cartas y repartirlas, al jugador en cuestión le interesa un número asociado al mismo, que en este caso es la suma de las dos cartas del mismo palo mayores (pero menores a 10).</description>
+      <description>Existen ocasiones en las que de los fenómenos aleatorios, nos interesan ciertos valores numéricos asociados a ellos. Por ejemplo, en una mano de truco un jugador puede suponer que su contrincante siempre va a aceptar envido si es que tiene más chances de ganar y entonces, antes de ver sus cartas, preguntarse ¿a partir de qué número me conviene cantar envido? Es decir, del experimento aleatorio, que consiste en mezclar las cartas y repartirlas, al jugador en cuestión le interesa un número asociado al mismo, que en este caso es la suma de las dos cartas del mismo palo mayores (pero menores a 10).</description>
     </item>
     
     <item>
