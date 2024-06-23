@@ -1,4 +1,7 @@
 baseURL = 'https://aprox.github.io/'
+defaultContentLanguage = 'castellano'
+languageName = "Castellano"
+LanguageName = "Castellano"
 languageCode = 'es'
 title = 'Aprox'
 theme = 'risotto'
