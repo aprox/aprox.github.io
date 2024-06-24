@@ -253,9 +253,350 @@ C no es la de
 varios ejemplos de memoria contigua que dinámicamente se puede ajustar y guarda
 elementos en forma contigua. Estos tipos varían pero todos incluyen métodos para
 conocer el tamaño de la colección, para leer el enésimo elemento, para insertar
-y remover al final. Y también, ajustan su tamaño si es necesario para 
+y remover al final. Y también, ajustan su tamaño si es necesario para albergar
+más elementos. Veamos.
+
+```
+typedef struct {
+    size_t len;
+    size_t capacity;
+    int* items;
+} array_list_int;
+
+int* array_list_at(array_list_int* a, size_t ix) {
+    return ix < a->len ? a->items[ix] : NULL;
+}
+
+int  array_list_push_back(array_list_int* a, int elem) {
+    if (a->len >= a->capacity) {
+        if (arary_list_realloc(a)) { return  1; /*error in realloc*/ }
+    }
+    a->items[a->len++] = elem;
+    return 0;
+}
+
+int  array_list_realloc(array_list_int* a) {
+    a->capacity = a->capacity ? 2 * a->capacity : DefaultInitialCapacity ;
+    a->items = realloc(a->items, a->capacity * sizeof(int)); 
+    return a->items == 0;
+} 
+```
+
+Tenemos entonces una `struct` con un arreglo de `int` (`items`), su capacidad (o
+sea, lo que efectivamente se pidió con `realloc`) y su tamaño (`len`, que es la
+cantidad de items guardados ya).
+
+`array_list_at` devuelve un puntero al enésimo elemento, si es que hay tal
+elemento, si no `NULL`, permitiendo accesder a él tanto para leer como para
+escribir.
+
+`array_list_push_back` inserta (_appendea_) al final, realocando[^2] memoria si
+es necesario.
+
+`array_list_realloc` reserva más memoria para los items usando `realloc`. LO que
+hace es duplicar la memoria, si es que ya hay memoria reclamada, y si no tomar
+un tamaño inicial por defecto.
 
 
+Ahora bien, esto es bastante simple, y en realidad suelen haber muchos más
+métodos en `vector`, `Arraylist` etc. Pero se ve el problema. Si quisieramos
+usar una estructura similar para otro tipo, por ejemplo `struct foo`, no podemos
+reutilizar ese código. ¿Por qué? bueno, como vimos en el parágrfo anterior, si
+`items` tiene como tipo declarado `int`, no podemos usarlo para escribir
+otro que no sea compatible.
+
+Podríamos usar un _workarround_. En vez de intentar usar la asignación:
+```
+typedef { int x; float f; } Foo;
+
+int main(void) {
+   int items[100];
+   Foo A = (Foo){.x=3, .f=0.14};
+   memcpy(items, &A, sizeof(A));
+   Foo B;
+   memcpy(&B, items, sizeof(A));
+   printf("pi: %f\n", B.x + B.f);
+}
+```
+
+Antes de seguir con este enfoque vale la pena notar que usar un arreglo de `int`
+para guardar cualquier cosa tiene un inconveniente en que seria complicado
+calcular la dirección de un objeto dentr ode ese arreglo (pudiendo no ser
+múltiplo justamente de `int`) por lo que suele usarse en estos casos el tipo
+`char`, que es uno, de modo que todas las direcciones son múltiplos de `char`.
+
+Escribiríamos entonces la versión genérica del arreglo dinámico así:
+
+```
+enum { DefaultInitialCapacity = 2 };
+
+typedef struct {
+    size_t len;
+    size_t capacity;
+    char* items;
+    size_t item_sz;
+} array_list;
+
+int  array_list_realloc(array_list* a) {
+    a->capacity = a->capacity ? 2 * a->capacity : DefaultInitialCapacity ;
+    a->items = realloc(a->items, a->capacity * sizeof(a->item_sz)); 
+    return a->items == 0;
+} 
+
+int array_list_at(array_list* a, size_t ix, void* ptr) {
+    if (ix < a->len) {
+        memmove(ptr, a->items + ix * a->item_sz, a->item_sz);
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
+int  array_list_push_back(array_list* a, void* ptr) {
+    if (a->len >= a->capacity) {
+        if (array_list_realloc(a)) { return  1; /*error in realloc*/ }
+    }
+    memmove(a->items + a->len++ * a->item_sz, ptr, a->item_sz);
+    return 0;
+}
+```
+
+`array_list_at`: en lugar de devolver un puntero devuelve un status y guarda el
+valor en el parámetro en caso de que el status sea ok (si guardaramos `NULL` en
+caso de un `status != Ok`, entonces no podríamos distinguir de un valor legítimo
+`NULL` o `0`). La principal diferencia es que necesitamos que la estructira
+conozca el size del objeto para calcular el offset de cada item.
+
+Ahora bien, hemos ganado generalidad, pero a costa de relajar el tipado, de
+hacerlo menos estricto. Pero el problema (ya que se puede arguemtar que despuせ
+de todo el sistema de tipos de C es débil y que esto no lo debilita más y se
+pueden hacer todo tipo de cosas incluso tipando cada arreglo con su tipo) es que
+hacemos muy facil que el usuario se equivoque sin que el compilador diga nada.
+Por ejemplo, podemos hacer que el usuario defina un arreglo de `int`s pero
+pretenda guardar un tipo diferente o vice versa. Si fuera el caso de que uno es
+más grande que el otro, terminaríamos muy rapidamente en un `SIGSEGV` sin que el
+compilador pueda haberlo detectado y sin tampoco que el usuario reciba un
+estatus de error.
+
+Nos gustaría que el arreglo siga siendo tipado pero que, en vez de escibir la
+versión para cada tipo, escibir la forma general y parametrizar el tipo a ser
+usado. Básicamente los que hace `C++` con los templates.
+
+Bueno, para ese fin pueden usarse las macros de C. Leyendo en foros y redes
+sociales parecería que las macros de C tiene algo de mala fama, tal ve
+influenciada por comentarios negativos de Bjarne Stroustoup sobre ellas (que,
+básicamente, desalienta su uso por completo), quizá por algunos codebases que se
+vuelven algo crípticos en su uso, o porque el debugger no muestra el código de
+las macros...
+ 
+
+Una primera idea sería definir macro tipo funciones que reciban el tipo como
+parámetro si en necesario, o que reciban un arreglo genérico. O sea:
+
+```
+#define array_list_of(Type) array_list_of ## Type
+
+#define typedef_array_list_of(Type) \
+    typedef struct { \
+        Type* items; \
+        size_t len; \
+        size_t capacity; \
+    } array_list_of(Type)
+```
+
+Acá, tenemos la macro `array_list_of` que arma una string que sirve para nombrar
+el tipo a definir. Si el usuario quiere un arreglo de `float` lo definirá:
+`typedef_array_list_of(float)` y luego `array_list_of(float) a`, etc.
+
+Luego las macros:
+
+```
+#define array_list_len(A) ((A)->len)
+#define array_list_items(M) ((M)->items)
+#define array_list_capacity(M) ((M)->capacity)
+#define arl_item_size(M) sizeof(*arl_items(M))
+
+#define array_list_err(A) \
+    (array_list_capacity(A) == 0 && array_list_len(A) == 1 )
+
+#define array_list_at(A, Ix) \
+    ((Ix >= array_list_len(A)) ? 0x0 : array_list_items(A) + Ix)
+
+#define array_list_push_back(A, Elem) do { \
+    if (array_list_len(A) >= array_list_capacity(A)) { \
+        _array_list_realloc_or_set_err(A); \
+    } \
+    if (!array_list_err(A)) { (A)->items[(A)->len++] = Elem; } \
+} while(0)
+
+#define _array_list_realloc_or_set_err(M) \
+do { \
+    array_list_capacity(M) = array_list_capacity(M) ? 2 * array_list_capacity(M) : ArlDefaultInitialCapacity ; \
+    (M)->items = realloc(array_list_items(M), array_list_capacity(M) * array_list_item_size(M)); \
+    if (!(M)->items) { perror("realloc failed"); _array_list_set_error(M); } \
+} while(0)
+```
+
+El enfoque es bastante parecido, pero adaptándolo al hecho de quei estamos usndo
+macros. El método `at` es idéntico a nuestra primer vesión. Pero ahora no
+podemos devolver un status entonces usamos una especie de "hack": dado que la
+capacity nunca puede ser menor que el len, usamos la condición (que no es un
+estado valido para ningún arreglo) capacity == 0 && len == 1. Entonces
+permitimos que el usuario verifique el status con la marcro `array_list_err`.
+
+Otro método que sería bueno agregar es el método `find` que busque un elemento
+en un arreglo y devuelva su dirección, si la encuentra. En este caso, podríamos
+ahsta hacer una función genérica que no sea para uso del usuario sino para una
+macro genérica.
+
+```
+static inline void* _array_list_find(
+    char* items,
+    char* x,
+    size_t itsz,
+    size_t len,
+    int (*compar)(void* item, void* elem, size_t item_sz)
+) {
+    for (size_t i = 0; i < len; ++i) {
+        char* addr = items + itsz * i;
+        if (compar(addr, x, itsz) == 0) { return addr; }
+    }
+    return 0x0;
+}
+``` 
+
+Y luego llamarla mediante:
+
+```
+#define array_list_find(M, X) \
+    _array_list_find( \
+        (char*)array_list_items(M), \
+        (char*)&X, \
+        array_list_item_size(M), \
+        array_list_len(M), \
+        array_list_cmp_for(M) \
+    )
+
+```
+
+El punto importante acá es la función `compar`, que es parámetro de la función
+`_array_list_find`, y que es referenciada por la macro `array_list_cmp`. Esta
+función es necesaria porque no es posible saber _a priori_ como habría que
+compar los datos, es decir, el elemento que estamos buscando, y los items del
+arreglo.
+
+Si usaramos la siguiente función:
+
+```
+int compar(void* item, coid* elem, size_t itsz) {
+    return strncmp(item, elem, itsz);
+}
+```
+
+Vamos a poder entonces valores guardados en el arreglo de items. Pero esto no
+sirve para punteros. Por ejemplo, si quisiéramos un arreglo de `char*`, entonces
+compararíamos los punteros y dos punteros a la misma string compararían
+desiguales.
+
+Y más aún, podría ser una estructura con punteros cuya comparación implique
+desreferenciar esos punteros par aver qué valor contienen hasta un nivel
+arbitrario de indirecciones.
+
+Y para colmo, no dijimos cómo definimos la macro `array_list_cmp_for`. La idea
+era que el usuario defina esa función:
+
+```
+void* array_list_cmp_of(AConcreteType) (void* items, void* elem, size_t itsz) {
+    return strncmp(item, elem, itsz);
+}
+```
+
+Pero después no podemos referirla mediante otra macro entre cuyos parámetros no
+esté ese tipo concreto. Podemos, sí, dado un arreglo genérico `A` usar algo como
+
+```
+typeof(*(A)->items) elem;
+```
+
+pero no algo como:
+
+```
+void* (*cmp)(void*, void*, size_t) = array_list_cmp__of(typeof(*(A)->items));
+```
+
+porque si bien `typeof(*(A)->items)` resuelve al final de todas las fases de
+compiación en el tipo buscado, el preprocesador no hace esa sustitución y
+[deja el parámetro tal cual](https://stackoverflow.com/questions/72619967/why-cant-gccs-typeof-be-stringified)
+
+En este punto uno podría pensar en resolver este problema haciendo esa función
+miembro de la instancia del arreglo, o sea: 
+
+```
+#define typedef_array_list_of(Type) \
+    typedef struct { \
+        Type* items; \
+        size_t len; \
+        size_t capacity; \
+        int (*cmp)(void*, void*, size_t); \
+    } array_list_of(Type)
+```
+
+y después 
+
+```
+#define array_list_cmp_for(A) (A)->cmp
+```
+
+Si bien esto funcionaría tiene la desventaja de que cada instancia de 
+`array_list_Type` va a tener que tener un puntero a una función innecesariamente
+ya que es siempre la misma (dado que la naturaleza de esa función depende
+exclusivamente del tipo, y el tipo es siempre el mismo para cada una de esas
+instancias). Y eso no sólo es un desperdicion de memoria si no que uan eventual
+fuente extra de errores, ya que el valor de ese punter podría camabirse (por
+error) y es bueno limitar la probabilidad d eocurrencia de ese tipo de cosas
+siempre que se pueda.
+
+De todas formas, el punto de todo esto es simplemente mostar que, dado que esta
+técnica se basa en la
+[stringificación](https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Stringification.html),
+a menos que querramos agregar el tipo como parámetro para funciones como
+`array_list_cmp_for`, vamos a tener que agregarlo a la struct que define el
+arreglo.
+
+Esa técnica está en clara desventaja repecto de por ejemplo las `templates` de
+C++ donde uno podría hacer:
+
+```
+template<typename T>
+class array_list {
+    size_t len; 
+    size_t capacity; 
+    T* items; 
+}
+```
+
+Sin embargo, hay un técnica disponible en C para sortear el inconveniente
+mancionado arriba (y también el de lo complicado que puede ser tener todo el
+código definido en macos tamto para debugguear como para navegar e lcódigo, al
+menos para mi). Uno podría definir el _header_ dejando al usuario definir el
+tipo como `#define T MyType` para luego importar el _header file_, que use
+`T` directamente. Tenemos un ejemplo de esto en
+[https://github.com/glouw/ctl](https://github.com/glouw/ctl) y
+tambien en este fork de ese repo:
+[https://github.com/rurban/ctl](https://github.com/rurban/ctl). Se trata de
+implementaciones de la STL de C++ en C, llamada **CTL**.
+
+```
+#ifndef T
+#error "Template type T undefined for <ctl/array_list.h>"
+#endif
+
+#define TypeName array_list #T
+
+typedef struct {
+} TypeName;
+
+```
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Tomemos por ejemplo la función de la librería standard de C `printf`[^2]:
@@ -306,5 +647,8 @@ https://news.ycombinator.com/item?id=25576466
     _library_ es _biblioteca_, pero como bien dice
     [wikipedia](https://es.wikipedia.org/wiki/Biblioteca_(inform%C3%A1tica)), el
     vicio del lenguaje (?) hace que todo el mundo diga _librería_.
+
+[^2]: El mismo profesor nos decía que no digamos alocar, que significa volver
+    loco, pero la lengua cambia.
 
 [^2]: Cf. `man 3 printf`.
