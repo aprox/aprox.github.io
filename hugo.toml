@@ -1,0 +1,46 @@
+baseURL = 'https://aprox.github.io/'
+defaultContentLanguage = 'castellano'
+languageName = "Castellano"
+LanguageName = "Castellano"
+languageCode = 'es'
+title = 'Aprox'
+theme = 'archie'
+
+enableRobotsTXT = true
+
+#[[menu.main]]
+#  identifier = "about"
+#  name = "About"
+#  url = "/about/"
+
+[params]
+	mode="auto" # color-mode → light,dark,toggle or auto
+	useCDN=false # don't use CDNs for fonts and icons, instead serve them locally.
+	#subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/athul/archie)"
+	mathjax = true # enable MathJax support
+	katex = true # enable KaTeX support
+
+[[params.social]]
+  icon = "mail"
+  name = "Email"
+  url = "mailto:nsanmartin@dc.uba.ar"
+
+[[params.social]]
+  name = "GitHub"
+  icon = "github"
+  url = "https://github.com/nsanmartin"
+
+[[params.social]]
+  name = "Twitter"
+  icon = "twitter"
+  url = "https://twitter.com/nicolassanmart/"
+
+[[params.social]]
+  icon = "rss"
+  name = "RSS"
+  url = "https://aprox.github.io/index.xml"
+
+[sitemap]
+    changeFreq = 'monthly'
+    filename = 'sitemap.xml'
+    priority = 0
